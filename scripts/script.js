@@ -18,3 +18,18 @@ function calculateWinner(playerSelection, computerSelection) {
     return "computer";
   }
 }
+
+function playRound(playerSelection, computerSelection) {
+  let winner = calculateWinner(playerSelection, computerSelection);
+  if (winner == "player") {
+    roundMessage = "You Won! " + capitalize(playerSelection) +
+     " beats " + capitalize(computerSelection)
+  } else if (winner =="computer") {
+    roundMessage = "You Lose! " + capitalize(computerSelection) +
+     " beats " + capitalize(playerSelection)
+  } else {
+    roundMessage = "Tie! Both had " + FirstLetter(playerSelection) 
+  }
+  
+  return roundMessage;
+}
