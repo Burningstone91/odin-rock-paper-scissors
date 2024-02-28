@@ -31,6 +31,12 @@ function playRound(playerSelection, computerSelection) {
   return roundMessage;
 }
 
+function capitalize (str) {
+  let firstLetter = str.charAt(0);
+  let remainingString = str.slice(1);
+  return firstLetter.toUpperCase() + remainingString.toLowerCase();
+}
+
 function playGame() {
   let playerScore = 0;
   let computerScore = 0;
