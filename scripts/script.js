@@ -50,8 +50,9 @@ function playRound(playerSelection, computerSelection) {
     roundMessage = "Tie! Both had " + capitalize(playerSelection) 
   }
   
-  console.log(roundMessage);
+  alert(roundMessage);
   updateScoreboard(winner);
+  checkGameStatus();
 }
 
 function capitalize (str) {
@@ -68,39 +69,18 @@ function updateScoreboard(winner) {
   paraComputerScore.textContent = "Computer Score: " + computerScore;
 }
 
-
-
-
-
-
-function playGame() {
-  let playerScore = 0;
-  let computerScore = 0;
-
-  for (let i = 0; i < 5; i++) {
-    let playerSelection = prompt("Rock, Paper or Scissors)", "").toLowerCase();
-    let computerSelection = getComputerChoice();
-    let winner = calculateWinner(playerSelection, computerSelection);
-
-    if (winner == "player") {
-      playerScore += 1;
-    } else if (winner == "computer") {
-      computerScore += 1;
-    }
-
-    console.log(playRound(playerSelection, computerSelection));
+function checkGameStatus() {
+  if (playerScore == 5) {
+    alert("You won!")
+    resetGame();
+  } else if (computerScore == 5) {
+    alert("You Lost")
+    resetGame();
   }
 
-  if (playerScore > computerScore) {
-    console.log("You Won!");
-  } else if (playerScore < computerScore) {
-    console.log("You Lose!");
-  } else {
-    console.log("Tie!");
-  }
-
-  console.log("Final Score: You: " + playerScore + " / Computer: " + computerScore);
-  
 }
 
-//console.log(playGame());
+function resetGame() {
+  paraPlayerScore.textContent = "Player Score: 0";
+  paraComputerScore.textContent = "Computer Score: 0";
+}
