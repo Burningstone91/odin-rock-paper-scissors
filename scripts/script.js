@@ -41,16 +41,14 @@ function playRound(playerSelection, computerSelection) {
     roundMessage = "You Lose! " + capitalize(computerSelection) +
      " beats " + capitalize(playerSelection)
   } else {
-    roundMessage = "Tie! Both had " + FirstLetter(playerSelection) 
+    roundMessage = "Tie! Both had " + capitalize(playerSelection) 
   }
   
   console.log(roundMessage);
 }
 
 function capitalize (str) {
-  let firstLetter = str.charAt(0);
-  let remainingString = str.slice(1);
-  return firstLetter.toUpperCase() + remainingString.toLowerCase();
+  return str.charAt(0).toUpperCase() + str.toLowerCase().slice(1) 
 }
 
 function playGame() {
