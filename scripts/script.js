@@ -1,6 +1,10 @@
 const rockBtn = document.querySelector("#rock");
 const paperBtn = document.querySelector("#paper");
 const scissorsBtn = document.querySelector("#scissors");
+let playerScore = 0;
+let computerScore = 0;
+const paraPlayerScore = document.querySelector(".playerScore");
+const paraComputerScore = document.querySelector(".computerScore");
 
 rockBtn.addEventListener("click", function() {
   playRound("rock", getComputerChoice());
@@ -13,6 +17,8 @@ paperBtn.addEventListener("click", function() {
 scissorsBtn.addEventListener("click", function() {
   playRound("scissors", getComputerChoice());
 })
+
+
 
 function getComputerChoice() {
   const choices = ["rock", "paper", "scissors"];
@@ -37,7 +43,7 @@ function playRound(playerSelection, computerSelection) {
   if (winner == "player") {
     roundMessage = "You Won! " + capitalize(playerSelection) +
      " beats " + capitalize(computerSelection)
-  } else if (winner =="computer") {
+  } else if (winner == "computer") {
     roundMessage = "You Lose! " + capitalize(computerSelection) +
      " beats " + capitalize(playerSelection)
   } else {
@@ -45,11 +51,27 @@ function playRound(playerSelection, computerSelection) {
   }
   
   console.log(roundMessage);
+  updateScoreboard(winner);
 }
 
 function capitalize (str) {
   return str.charAt(0).toUpperCase() + str.toLowerCase().slice(1) 
 }
+
+function updateScoreboard(winner) {
+  if (winner == "computer") {
+    computerScore += 1;
+  } else if (winner == "player") {
+    playerScore += 1;
+  }
+  paraPlayerScore.textContent = "Player Score: " + playerScore;
+  paraComputerScore.textContent = "Computer Score: " + computerScore;
+}
+
+
+
+
+
 
 function playGame() {
   let playerScore = 0;
