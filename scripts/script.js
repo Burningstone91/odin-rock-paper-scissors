@@ -1,5 +1,21 @@
+const rockBtn = document.querySelector("#rock");
+const paperBtn = document.querySelector("#paper");
+const scissorsBtn = document.querySelector("#scissors");
+
+rockBtn.addEventListener("click", function() {
+  playRound("rock", getComputerChoice());
+})
+
+paperBtn.addEventListener("click", function() {
+  playRound("paper", getComputerChoice());
+})
+
+scissorsBtn.addEventListener("click", function() {
+  playRound("scissors", getComputerChoice());
+})
+
 function getComputerChoice() {
-  const choices = ["rock", "paper", "scissor"];
+  const choices = ["rock", "paper", "scissors"];
   const random = Math.floor(Math.random() * 3)
   return choices[random]
 }
@@ -7,9 +23,9 @@ function getComputerChoice() {
 function calculateWinner(playerSelection, computerSelection) {
   if (playerSelection == computerSelection) {
     return "tie";
-  } else if ((playerSelection == "rock" && computerSelection == "scissor") ||
+  } else if ((playerSelection == "rock" && computerSelection == "scissors") ||
       (playerSelection == "paper" && computerSelection == "rock") ||
-      (playerSelection == "scissor" && computerSelection == "paper")) {
+      (playerSelection == "scissors" && computerSelection == "paper")) {
     return "player";
   } else {
     return "computer";
@@ -28,7 +44,7 @@ function playRound(playerSelection, computerSelection) {
     roundMessage = "Tie! Both had " + FirstLetter(playerSelection) 
   }
   
-  return roundMessage;
+  console.log(roundMessage);
 }
 
 function capitalize (str) {
